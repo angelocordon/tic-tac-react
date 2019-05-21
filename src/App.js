@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Board from './Board';
+import Board from './board';
 import './index.scss';
 
 class App extends Component {
