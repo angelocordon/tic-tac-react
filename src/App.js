@@ -7,8 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      gridSize: 3,
-      currentKey: 'x'
+      gridSize: 3
     }
   }
 
@@ -16,7 +15,7 @@ class App extends Component {
     return (
       <div className="columns">
         <div className="column is-two-thirds">
-          <Board />
+          <Board size={this.state.gridSize} />
         </div>
         <div className="column is-one-third">
           <p>X, O</p>
