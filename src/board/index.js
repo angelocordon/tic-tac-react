@@ -27,12 +27,17 @@ class Board extends Component {
     return Array(size).fill(0).map(componentCallback);
   }
 
-  squareElement = (_, index) => {
-    return <Square key={index} getCurrentInput={this.getCurrentInput} />
-  }
+  renderSquares = (size, rowIndex) => {
+    const squares = this.arrayFromElements(size, (_, index) => {
+      return (
+        <Square 
+          key={`${rowIndex}${index}`} 
+          getCurrentInput={this.getCurrentInput} 
+        />
+      )
+    });
 
-  renderSquares = (size) => {
-    return this.arrayFromElements(size, this.squareElement)
+    return squares;
   }
 
   renderRow = (index, size) => {
@@ -55,6 +60,7 @@ class Board extends Component {
   componentDidMount() {
     const board = document.getElementsByClassName('board')[0];
     const width = board.offsetWidth;
+
     board.style.height = `${width}px`;
     this.setState({ boardWidth: width });
   }
