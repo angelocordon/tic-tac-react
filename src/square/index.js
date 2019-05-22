@@ -25,7 +25,8 @@ class Square extends Component {
     return (
       <button
         onClick={this.handleClick} 
-        className="square">
+        className="square"
+        disabled={this.state.clicked}>
           { this.state.input }
       </button>
     )
