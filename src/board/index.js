@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Row from '../row';
 import Square from '../square';
 import './board.scss';
 
@@ -6,7 +7,8 @@ class Board extends Component {
   constructor() {
     super();
     this.state = { 
-      lastInput: 'o'
+      lastInput: 'o',
+      boardWidth: 0
     }
   }
 
@@ -35,9 +37,9 @@ class Board extends Component {
 
   renderRow = (index, size) => {
     return (
-      <div className="grid-row" key={index}>
+      <Row key={index}>
         { this.renderSquares(size, index) }
-      </div>
+      </Row>
     )
   }
 
@@ -54,6 +56,7 @@ class Board extends Component {
     const board = document.getElementsByClassName('board')[0];
     const width = board.offsetWidth;
     board.style.height = `${width}px`;
+    this.setState({ boardWidth: width });
   }
 
   render() {
