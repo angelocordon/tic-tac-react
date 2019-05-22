@@ -22,8 +22,7 @@ class Square extends Component {
     return (
       <button
         onClick={this.handleClick} 
-        className="square" 
-        style={{'maxWidth': `${this.props.width}%`}}>
+        className="square">
           { this.state.input }
       </button>
     )

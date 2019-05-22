@@ -20,29 +20,46 @@ class Board extends Component {
     return this.setAndReturnInput('o');
   }
 
-  renderSquares = () => {
-    // Square `size` props to get number of `<Square>` components needed
-    const boardSize = Math.pow(this.props.size, 2);
-    const squareWidth = 100 / this.props.size;
-    const squares = [];
-    
-    for (let i = boardSize; i > 0; i--) {
-      squares.push(
-        <Square
-          getCurrentInput={this.getCurrentInput}
-          key={i} 
-          width={squareWidth}
-        />
-      )
-    }
-
-    return squares;
+  // Builds an array of components the same length as the board size
+  arrayFromElements = (size, componentCallback) => {
+    return Array(size).fill(0).map(componentCallback);
   }
 
-  render () {
+  squareElement = (_, index) => {
+    return <Square key={index} getCurrentInput={this.getCurrentInput} />
+  }
+
+  renderSquares = (size) => {
+    return this.arrayFromElements(size, this.squareElement)
+  }
+
+  renderRow = (index, size) => {
+    return (
+      <div className="grid-row" key={index}>
+        { this.renderSquares(size, index) }
+      </div>
+    )
+  }
+
+  renderGrid = (size) => {
+    const grid = this.arrayFromElements(size, (_, index) => {
+      return this.renderRow(index, size);
+    });
+
+    return grid;
+  }
+
+  // Ensure that Board is always a square on page load / component mount
+  componentDidMount() {
+    const board = document.getElementsByClassName('board')[0];
+    const width = board.offsetWidth;
+    board.style.height = `${width}px`;
+  }
+
+  render() {
     return (
       <div className="board">
-        {this.renderSquares()}
+        { this.renderGrid(this.props.size) }
       </div>
     )
   }
