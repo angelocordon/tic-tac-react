@@ -5,8 +5,11 @@ class Square extends Component {
   constructor () {
     super();
     this.state = {
-      clicked: false,
-      input: ''
+      // Use a blank non-breaking space when app first loads; 
+      // An HTML character is needed inside the `<button>` element  to prevent
+      // it form jumping when the state input is filled in.
+      input: ' ',
+      clicked: false
     }
   }
 
