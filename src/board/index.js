@@ -6,8 +6,18 @@ class Board extends Component {
   constructor() {
     super();
     this.state = { 
-      currentInput: 'x'
+      lastInput: 'o'
     }
+  }
+
+  setAndReturnInput = (input) => {
+    this.setState({ lastInput: input });
+    return input;
+  }
+
+  getCurrentInput = () => {
+    if (this.state.lastInput === 'o') { return this.setAndReturnInput('x') }
+    return this.setAndReturnInput('o');
   }
 
   renderSquares = () => {
@@ -18,9 +28,9 @@ class Board extends Component {
     
     for (let i = boardSize; i > 0; i--) {
       squares.push(
-        <Square 
+        <Square
+          getCurrentInput={this.getCurrentInput}
           key={i} 
-          input={this.state.currentInput}
           width={squareWidth}
         />
       )

@@ -2,12 +2,29 @@ import React, { Component } from 'react';
 import './square.scss';
 
 class Square extends Component {
+  constructor () {
+    super();
+    this.state = {
+      clicked: false,
+      input: ''
+    }
+  }
+
+  handleClick = (e) => {
+    // on click, disable button and get correct input value
+    this.setState({
+      input: this.props.getCurrentInput(),
+      clicked: true 
+    });
+  }
+
   render () {
     return (
-      <button 
+      <button
+        onClick={this.handleClick} 
         className="square" 
-        style={{'max-width': `${this.props.width}%`}}> 
-        {this.props.input} 
+        style={{'maxWidth': `${this.props.width}%`}}>
+          { this.state.input }
       </button>
     )
   }
