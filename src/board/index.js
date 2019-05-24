@@ -7,8 +7,7 @@ class Board extends Component {
   constructor() {
     super();
     this.state = { 
-      lastInput: 'o',
-      boardWidth: 0
+      lastInput: 'o'
     }
   }
 
@@ -33,6 +32,7 @@ class Board extends Component {
         <Square 
           key={`${rowIndex}${index}`} 
           getCurrentInput={this.getCurrentInput} 
+          size={size}
         />
       )
     });
@@ -42,7 +42,7 @@ class Board extends Component {
 
   renderRow = (index, size) => {
     return (
-      <Row key={index}>
+      <Row key={index} size={size}>
         { this.renderSquares(size, index) }
       </Row>
     )
@@ -54,15 +54,6 @@ class Board extends Component {
     });
 
     return grid;
-  }
-
-  // Ensure that Board is always a square on page load / component mount
-  componentDidMount() {
-    const board = document.getElementsByClassName('board')[0];
-    const width = board.offsetWidth;
-
-    board.style.height = `${width}px`;
-    this.setState({ boardWidth: width });
   }
 
   render() {
