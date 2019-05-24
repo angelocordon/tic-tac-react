@@ -11,6 +11,25 @@ class App extends Component {
     }
   }
 
+  increaseGridSize = () => {
+    this.setState(state => {
+      return { gridSize : state.gridSize + 1 }
+    })
+  }
+
+  decreaseGridSize = () => {
+    // Don't let the board size to be less than 3
+    if (this.state.gridSize > 3) {
+      this.setState(state => { 
+        return { gridSize : state.gridSize - 1 } 
+      })
+    }
+  }
+
+  resetBoard = () => {
+    this.setState({ gridSize: 3 });
+  }
+
   render () {
     return (
       <div className="columns">
@@ -18,8 +37,10 @@ class App extends Component {
           <Board size={this.state.gridSize} />
         </div>
         <div className="column is-one-third">
-          <p>X, O</p>
-          <button>Reset</button>
+          <button onClick={this.increaseGridSize}>+</button>
+          <button onClick={this.decreaseGridSize}>-</button>
+          <button onClick={this.resetBoard}>Reset</button>
+          <button onClick={this.clearBoard}>Clear Board</button>
         </div>
       </div>
     )
