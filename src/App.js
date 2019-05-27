@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
 import Board from './board';
-import './index.scss';
+import 'bulma/css/bulma.css'
 
 class App extends Component {
   constructor() {

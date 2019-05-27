@@ -1,0 +1,2 @@
+/* Calculating height based on viewport and leave space for title and menu */
+.board { height: calc(100vh - 200px) }

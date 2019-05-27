@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './square.scss';
+import './square.css';
 
 class Square extends Component {
   constructor () {

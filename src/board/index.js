@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Row from '../row';
 import Square from '../square';
-import './board.scss';
+import './board.css';
 
 class Board extends Component {
   constructor() {
