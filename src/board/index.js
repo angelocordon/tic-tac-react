@@ -22,6 +22,7 @@ class Board extends Component {
   }
 
   // Builds an array of components the same length as the board size
+  // Using `Array().fill()` pattern was inspired from a StackOverflow question
   arrayFromElements = (size, componentCallback) => {
     return Array(size).fill(0).map(componentCallback);
   }
