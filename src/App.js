@@ -37,10 +37,28 @@ class App extends Component {
           <Board size={this.state.gridSize} />
         </div>
         <div className="column is-one-third">
-          <button onClick={this.increaseGridSize}>+</button>
-          <button onClick={this.decreaseGridSize}>-</button>
-          <button onClick={this.resetBoard}>Reset</button>
-          <button onClick={this.clearBoard}>Clear Board</button>
+          <div className="buttons">
+            <button 
+              onClick={this.increaseGridSize}
+              className="button">
+                +
+            </button>
+            <button 
+              onClick={this.decreaseGridSize}
+              className="button">
+                -
+            </button>
+            <button 
+              onClick={this.resetBoard}
+              className="button">
+                Reset
+            </button>
+            <button 
+              onClick={this.clearBoard}
+              className="button">
+                Clear Board
+            </button>
+          </div>
         </div>
       </div>
     )
